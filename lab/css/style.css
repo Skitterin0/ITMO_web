@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+:root {
+    --aqua_logo: #0FF0FA;
+    --aqua: #11d1d9;
+    --blue: #150DDE;
+    --pink: #c216b2;
+    --orange: #DE480D;
+    --yellow: #FFC000;
+    --black: #1c1c2f;
+    --grey: #3F3F3FD9;
+    --top-color: rgba(168, 182, 182, 0.38);
+    --bg-color: #f0f8f8;
+}
+
+@font-face {
+    font-family: Graffity City;
+    src: url("../fonts/Graffiti City.otf");
+}
+
+@font-face {
+    font-family: CrazyClique;
+    src: url("../fonts/CrazyClique.ttf");
+}
+
+.site-header {
+    position: sticky;
+    top: 0px;
+    height: 170px;
+    /*border-bottom: 1px solid rgba(168, 182, 182, 0.25);*/
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    z-index: 100000;
+    background-color: #ffffff;
+}
+
+.site-header__top-area {
+    display: flex;
+    flex-direction: row;
+    border-top: 5px solid var(--aqua_logo);
+    border-bottom: 1px solid var(--top-color);
+    width: 100%;
+    height: 50px;
+    background: var(--bg-color);
+}
+
+.site-header__socials {
+    display: flex;
+    width: 100px;
+    height: inherit;
+    border-right: 1px solid var(--top-color);
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 15px;
+}
+
+.site_header__main-panel {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+}
+
+.site-title {
+    margin-left: 30px;
+    font-size: 70px;
+    font-family: Graffity City, serif;
+    color: var(--aqua_logo);
+    text-shadow: -6px 5px 0 var(--pink);
+    padding: 5px 0 10px;
+}
+
+.site_header__navigation-bar {
+    display: inline-block;
+    text-align: right;
+    width: 600px;
+}
+
+.navigation-menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 1280px) {
+    .site_header__main-panel {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .site-title {
+        font-size: 60px;
+        margin-left: 0;
+    }
+}
+
+.navigation-element {
+    font-family: Nunito, serif;
+    font-weight: bold;
+    color: var(--black);
+    transition: color 0.6s ease;
+    font-size: 16px;
+    padding: 10px 15px;
+}
+
+.active {
+    border: 2px solid var(--black);
+    border-radius: 2px;
+}
+
+.navigation-element:hover {
+    color: var(--aqua);
+    transition: color 0.3s ease;
+}
+
+.link {
+    text-decoration-line: none;
+    color: inherit;
+}
+
+.services {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    background: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-header {
+    font-family: CrazyClique, serif;
+    font-weight: bold;
+    font-size: 100px;
+    margin-bottom: 10px;
+    text-shadow: -6px 5px 0 var(--aqua);
+}
+
+.services-list {
+    list-style: none;
+    display: flex;
+    /*flex-direction: column;*/
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-inline-start: 0;
+    font-family: sans-serif;
+    width: 70%;
+    gap: 15px 10px;
+}
+
+.services-element {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-nav {
+    padding-top: 5px;
+    background: var(--black);
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: static;
+    bottom: 0;
+}
+
+.additional-info {
+    display: flex;
+
+}
+
+.link-info {
+    color: aliceblue;
+    opacity: 70%;
+    font-size: 15px;
+    text-decoration-line: none;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: inherit;
+    color: aliceblue;
+    opacity: 70%;
+}
+
+.image {
+    height: 150px;
+    width: 230px;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+li {
+    padding: 5px;
+}
+
+li > p {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2px;
+    font-family: Nunito, serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+service-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
