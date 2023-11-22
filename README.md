@@ -1,2 +1,2 @@
 # М33061 Шароватов Вадим Дмитриевич. Сайт студии граффити
-[Lab1](../ITMO_web/Lab1/index.html)
+[lab](../ITMO_web/lab/index.html)
