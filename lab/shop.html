@@ -5,12 +5,15 @@
     <title>Магазин - Street Kanvas</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/shop_styles.css">
     <meta charset="UTF-8">
     <meta name="keywords" content="граффити, стрит-арт, искусство, кастом">
     <meta name="description" content="Студия дизайна для любителей монументальной живописи и граффити,
      желающих опробовать себя в уличном искусстве, или людей стремящихся создать для себя яркие и нобычные образы">
+    <script src="scripts/cartInitiate.js"></script>
     <script src="scripts/loadStat.js"></script>
     <script src="scripts/menuEdit.js"></script>
+    <script src="scripts/cartButton.js"></script>
 </head>
 <body>
 <header class="site-header">
@@ -29,16 +32,62 @@
         </h1>
         <nav class="site_header__navigation-bar">
             <ul class="navigation-menu">
-                <li class="navigation-element"><a class="link" href="index.html">Главная</a></li>
-                <li class="navigation-element"><a class="link" href="services.html">Услуги</a></li>
-                <li class="navigation-element"><a class="link" href="shop.html">Магазин</a></li>
-                <li class="navigation-element"><a class="link" href="about.html">О нас</a></li>
-                <li class="navigation-element"><a class="link" href="contact.html">Связаться с нами</a></li>
+                <li class="navigation-element"><a class="link" href="index.html">ГЛАВНАЯ</a></li>
+                <li class="navigation-element"><a class="link" href="services.html">УСЛУГИ</a></li>
+                <li class="navigation-element"><a class="link" href="shop.html">МАГАЗИН</a></li>
+                <li class="navigation-element"><a class="link" href="contact.html">СВЯЗАТЬСЯ С НАМИ</a></li>
+                <li class="navigation-element">
+                    <img src="images/header/cart-shopping-solid.svg" alt="cart" height="22" width="22">
+                </li>
             </ul>
+            <div class="cart">
+            </div>
         </nav>
     </div>
 </header>
-<main>
+<main class="shop">
+    <div class="filters">
+    </div>
+    <div class="products">
+        <div class="products__item">
+            <img class="products__img" src="images/shop/hoodie_beast.jpg" height="652" width="522">
+            <p class="product__price">
+                $50-$60
+            </p>
+            <a class="link cart_button">
+                В корзину
+            </a>
+        </div>
+        <div class="products__item">
+            <img class="products__img" src="images/shop/hoodie_happy.jpg" height="652" width="522">
+            <p class="product__price">
+                $50-$60
+            </p>
+            <a class="link cart_button">
+                В корзину
+            </a>
+        </div>
+    </div>
+    <div class="products">
+        <div class="products__item">
+            <img class="products__img" src="images/shop/hoodie_luxury.jpg" height="652" width="522">
+            <p class="product__price">
+               $50-$60
+            </p>
+            <a class="link cart_button">
+                В корзину
+            </a>
+        </div>
+        <div class="products__item">
+            <img class="products__img" src="images/shop/hoodie_true_love.jpg" height="652" width="522">
+            <p class="product__price">
+                $50-$60
+            </p>
+            <a class="link cart_button">
+                В корзину
+            </a>
+        </div>
+    </div>
 </main>
 <footer class="footer-nav">
     <div class="social">
