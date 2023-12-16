@@ -27,11 +27,10 @@
     position: sticky;
     top: 0px;
     height: 170px;
-    /*border-bottom: 1px solid rgba(168, 182, 182, 0.25);*/
     display: flex;
     flex-direction: column;
     padding-bottom: 10px;
-    z-index: 100000;
+    z-index: 10;
     background-color: #ffffff;
 }
 
@@ -73,7 +72,8 @@
 }
 
 .site_header__navigation-bar {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     text-align: right;
     width: 600px;
 }
@@ -99,11 +99,37 @@
 
 .navigation-element {
     font-family: Nunito, serif;
-    font-weight: bold;
     color: var(--black);
     transition: color 0.6s ease;
     font-size: 16px;
+    font-weight: bold;
     padding: 10px 15px;
+}
+
+.cart {
+    display: none;
+    position: fixed;
+    z-index: 15;
+    margin-top: 35px;
+    margin-right: 30px;
+    flex-direction: column;
+    width: 200px;
+    height: fit-content;
+    background-color: var(--bg-color);
+    align-self: flex-end;
+}
+
+.modal-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-image {
+
+}
+
+.modal-description {
+    text-align: center;
 }
 
 .active {
