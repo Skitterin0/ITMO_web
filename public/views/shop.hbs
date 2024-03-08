@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин - Street Kanvas</title>
+    {{> styles }}
+    <link rel="stylesheet" href="css/shop_styles.css">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="граффити, стрит-арт, искусство, кастом">
+    <meta name="description" content="Студия дизайна для любителей монументальной живописи и граффити,
+     желающих опробовать себя в уличном искусстве, или людей стремящихся создать для себя яркие и нобычные образы">
+    {{> scripts }}
+    <script src="scripts/cartButton.js"></script>
+</head>
+<body>
+{{> header }}
+<main class="shop">
+    <div class="filters">
+    </div>
+    <div class="products">
+        <div class="products__item">
+            <img class="products__img" src="images/shop/hoodie_beast.jpg" height="652" width="522">
+            <p class="product__price">
+                $50-$60
+            </p>
+            <a class="link cart_button">
+                В корзину
+            </a>
+        </div>
+        <div class="products__item">
+            <img class="products__img" src="images/shop/hoodie_happy.jpg" height="652" width="522">
+            <p class="product__price">
+                $50-$60
+            </p>
+            <a class="link cart_button">
+                В корзину
+            </a>
+        </div>
+    </div>
+    <div class="products">
+        <div class="products__item">
+            <img class="products__img" src="images/shop/hoodie_luxury.jpg" height="652" width="522">
+            <p class="product__price">
+                $50-$60
+            </p>
+            <a class="link cart_button">
+                В корзину
+            </a>
+        </div>
+        <div class="products__item">
+            <img class="products__img" src="images/shop/hoodie_true_love.jpg" height="652" width="522">
+            <p class="product__price">
+                $50-$60
+            </p>
+            <a class="link cart_button">
+                В корзину
+            </a>
+        </div>
+    </div>
+</main>
+{{> footer }}
+</body>
+</html>

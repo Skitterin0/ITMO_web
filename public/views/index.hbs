@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title> Street Kanvas - студия граффити и кастома</title>
+    {{> styles }}
+    <meta name="keywords" content="граффити, стрит-арт, искусство, кастом">
+    <meta name="description" content="Студия дизайна для любителей монументальной живописи и граффити,
+     желающих опробовать себя в уличном искусстве, или людей стремящихся создать для себя яркие и нобычные образы">
+    {{> scripts }}
+    <script src="scripts/service.js" defer></script>
+</head>
+<body>
+{{> header }}
+<main>
+    <div class="services">
+        <h2 class="service-header">Наши услуги</h2>
+        <ul class="services-list">
+            <li class="services-element">
+                <service-info name="Публичные мастер классы" img="images/classes.jpg"
+                              link="services.html"></service-info>
+            </li>
+            <li class="services-element">
+                <service-info name="Частные мероприятия" img="images/event.jpg" link="services.html"></service-info>
+            </li>
+            <li class="services-element">
+                <service-info name="Оффлайн мастерские" img="images/studio.jpg" link="services.html"></service-info>
+            </li>
+            <li class="services-element">
+                <service-info name="Декорирование вещей" img="images/custom.jpg" link="shop.html"></service-info>
+            </li>
+            <li class="services-element">
+                <service-info name="Декорирование помещений" img="images/house.jpg" link="services.html"></service-info>
+            </li>
+            <li class="services-element">
+                <service-info name="Публичные мастер классы" img="images/classes.jpg"
+                              link="services.html"></service-info>
+            </li>
+        </ul>
+    </div>
+</main>
+{{> footer }}
+</body>
+</html>
