@@ -8,5 +8,3 @@ if (localStorage.getItem("products") === null) {
     localStorage.setItem("products", JSON.stringify(products))
     console.log("products cart was created")
 }
-
-console.log("hello")

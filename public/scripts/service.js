@@ -4,7 +4,7 @@ class Service extends HTMLElement {
     }
 
     connectedCallback() {
-        const shadow = this.attachShadow({mode: 'open'});
+        const shadow = this.attachShadow({ mode: 'open' });
         shadow.innerHTML = `
             <style>
                 a {
