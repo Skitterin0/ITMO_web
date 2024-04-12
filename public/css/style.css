@@ -9,8 +9,9 @@
     --yellow: #FFC000;
     --black: #1c1c2f;
     --grey: #3F3F3FD9;
-    --top-color: rgba(168, 182, 182, 0.38);
+    --top-color: rgba(210, 225, 225, 0.38);
     --bg-color: #f0f8f8;
+    --header-color: #94A1A1FF;
 }
 
 @font-face {
@@ -37,11 +38,13 @@
 .site-header__top-area {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     border-top: 5px solid var(--aqua_logo);
     border-bottom: 1px solid var(--top-color);
     width: 100%;
     height: 50px;
     background: var(--bg-color);
+    color: var(--header-color);
 }
 
 .site-header__socials {
@@ -52,6 +55,17 @@
     align-items: center;
     justify-content: space-around;
     padding: 0 15px;
+}
+
+.site_header__login {
+    display: flex;
+    width: 80px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(200, 215, 215, 0.38);
+    margin: 10px 25px;
+    border-radius: 15px;
 }
 
 .site_header__main-panel {

@@ -1,3 +1,4 @@
+
 const startTime = Date.now();
 
 window.addEventListener("load", (() => {

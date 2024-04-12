@@ -4,15 +4,42 @@ import configuration from './config/configuration';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as hbs from 'hbs';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import supertokens from 'supertokens-node';
+import { SupertokensExceptionFilter } from './auth/auth.filter';
+import * as process from 'node:process';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+    const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  app.useStaticAssets(join(__dirname, '..', 'public'));
-  app.setBaseViewsDir(join(__dirname, '..', 'public', 'views'));
-  app.setViewEngine('hbs');
-  hbs.registerPartials(join(__dirname, '..', 'public', 'views', 'partials'));
+    app.useStaticAssets(join(__dirname, '..', 'public'));
+    app.setBaseViewsDir(join(__dirname, '..', 'public', 'views'));
+    app.setViewEngine('hbs');
 
-  await app.listen(configuration().port);
+    app.enableCors({
+        origin: ['http://localhost:1889'],
+        allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
+        credentials: true,
+    });
+
+    app.useGlobalFilters(new SupertokensExceptionFilter());
+
+    hbs.registerPartials(join(__dirname, '..', 'public', 'views', 'partials'));
+
+    const config = new DocumentBuilder()
+        .setTitle('Street Kanvas')
+        .addTag('Front', 'Endpoints for site pages')
+        .addTag('Users', 'Block for user entities endpoints')
+        .addTag('Products', 'Block for product entities endpoints')
+        .addTag('Orders', 'Block for orders access endpoints')
+        .addTag('Order-products', 'Block for access to wiring table order-products')
+        .setDescription("The SK API description")
+        .build();
+
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('api', app, document);
+
+    await app.listen(configuration().port);
 }
+
 bootstrap();

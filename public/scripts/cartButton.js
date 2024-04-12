@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", () => {
             modal.innerHTML += modalDiv(data.image, data.price)
             storagePush(data.image, data.price)
+            console.log('item added to cart')
         })
     })
 
