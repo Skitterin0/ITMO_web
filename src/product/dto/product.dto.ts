@@ -16,5 +16,8 @@ export class ProductDto implements Product {
     size: number;
 
     @ApiProperty()
+    image: string;
+
+    @ApiProperty()
     description: string;
 }

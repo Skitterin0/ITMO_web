@@ -26,6 +26,7 @@ model Product {
   name         String
   price        Decimal
   size         Int
+  image        String        @default("")
   description  String?
   orderProduct OrderProduct?
 }

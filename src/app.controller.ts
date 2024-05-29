@@ -2,8 +2,6 @@ import { Controller, Get, Render, Req, UseGuards, UseInterceptors } from '@nestj
 import { AppService } from "./app.service";
 import { ToolsInterceptor } from "./tools/tools.interceptor";
 import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { AuthGuard } from './auth/auth.guard';
-import { Session } from './auth/session/session.decorator';
 import { SessionContainer } from 'supertokens-node/recipe/session';
 
 @ApiBearerAuth()
@@ -12,13 +10,6 @@ import { SessionContainer } from 'supertokens-node/recipe/session';
 @UseInterceptors(ToolsInterceptor)
 export class AppController {
     constructor(private readonly appService: AppService) {}
-
-    @Get('test')
-    @UseGuards(new AuthGuard())
-    async getTest(@Session() session: SessionContainer): Promise<string> {
-        // TODO: magic
-        return "magic";
-    }
 
     @Get('/main')
     @ApiOperation({

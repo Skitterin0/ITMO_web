@@ -12,5 +12,8 @@ export class CreateProductDto {
     size: number;
 
     @ApiProperty()
+    image: string;
+
+    @ApiProperty()
     description: string;
 }

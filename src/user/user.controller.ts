@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, UseFilters, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.interface';
 import {
@@ -7,15 +7,19 @@ import {
     ApiCreatedResponse,
     ApiOkResponse,
     ApiOperation,
-    ApiParam,
+    ApiParam, ApiResponse,
     ApiTags,
 } from '@nestjs/swagger';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UserDto } from './dto/user.dto';
+import { Roles } from '../decorator/roles.decorator';
+import { RolesGuard } from '../guard/roles.guard';
+import { HttpExceptionFilter } from './filter/http-exception.filter';
 
 @ApiBearerAuth()
 @ApiTags('Users')
+@UseGuards(RolesGuard)
 @Controller('user')
 export class UserController {
     constructor(private userService: UserService) {}
@@ -49,6 +53,7 @@ export class UserController {
         description: 'User successfully logged in',
         type: UserDto
     })
+
     @Get('login')
     async login(@Body() loginUserDto: LoginUserDto) {
         this.userService.login(loginUserDto);
@@ -56,10 +61,10 @@ export class UserController {
 
     @ApiOperation({
         summary: 'Logout user',
-        description: 'Logout user form session'
+        description: 'Logout user form session',
     })
     @ApiOkResponse({
-        description: 'User successfully logged off'
+        description: 'User successfully logged off',
     })
     @Get('logout')
     async logout() {
@@ -90,11 +95,15 @@ export class UserController {
         type: UserDto,
         isArray: false
     })
+    @ApiResponse({
+        status: 403,
+        description: 'Invalid rights',
+    })
     @Get(':id')
+    @Roles(['admin'])
     async findUser(@Param('id') id: number): Promise<User> {
         return this.userService.findUser(+id);
     }
-    // parseIntPipe()
 
     @ApiOperation({
         summary: 'Delete user',
@@ -106,7 +115,12 @@ export class UserController {
     @ApiOkResponse({
         description: 'User was successfully deleted'
     })
+    @ApiResponse({
+        status: 403,
+        description: 'Invalid rights',
+    })
     @Delete(':id')
+    @Roles(['admin'])
     async deleteUser(@Param('id') id: number) {
         return this.userService.deleteUser(+id);
     }

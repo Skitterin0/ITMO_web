@@ -5,26 +5,27 @@ import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as hbs from 'hbs';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import supertokens from 'supertokens-node';
-import { SupertokensExceptionFilter } from './auth/auth.filter';
-import * as process from 'node:process';
+import { ValidationPipe } from '@nestjs/common';
+import { HttpExceptionFilter } from './user/filter/http-exception.filter';
 
 async function bootstrap() {
     const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-    app.useStaticAssets(join(__dirname, '..', 'public'));
-    app.setBaseViewsDir(join(__dirname, '..', 'public', 'views'));
+    app.useStaticAssets(join(__dirname, '..', '..', 'public'));
+    app.setBaseViewsDir(join(__dirname, '..', '..', 'public', 'views'));
     app.setViewEngine('hbs');
+    app.useGlobalPipes(new ValidationPipe({
+            disableErrorMessages: true,
+        }),
+    );
+    app.useGlobalFilters(new HttpExceptionFilter());
 
     app.enableCors({
         origin: ['http://localhost:1889'],
-        allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
         credentials: true,
     });
 
-    app.useGlobalFilters(new SupertokensExceptionFilter());
-
-    hbs.registerPartials(join(__dirname, '..', 'public', 'views', 'partials'));
+    hbs.registerPartials(join(__dirname, '..', '..', 'public', 'views', 'partials'));
 
     const config = new DocumentBuilder()
         .setTitle('Street Kanvas')

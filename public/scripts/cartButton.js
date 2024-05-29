@@ -1,9 +1,20 @@
-document.addEventListener("DOMContentLoaded", function () {
+function toast(data) {
+    Toastify({
+        text: data,
+        duration: '3000',
+        gravity: 'bottom',
+        style: {
+            background: '#7af491',
+        }
+    }).showToast();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
     const modal = document.querySelector(".cart");
     const cart = document.querySelector(".filters");
     let products = document.querySelectorAll(".products__item");
     const cart_button = document.querySelector(".navigation-element > img")
-    
+
     console.log(modal)
     console.log(cart_button)
 
@@ -42,12 +53,18 @@ document.addEventListener("DOMContentLoaded", function () {
     //   items.add(data)
     // }
 
+    socket.on('cart', (data) => {
+        toast(data);
+    })
+
     products.forEach((product) => {
         let data = {}
         data["image"] = product.children.item(0).getAttribute("src")
         data["price"] = product.children.item(1).textContent.trim()
         let button = product.children.item(2)
         button.addEventListener("click", () => {
+            socket.emit('cart');
+
             modal.innerHTML += modalDiv(data.image, data.price)
             storagePush(data.image, data.price)
             console.log('item added to cart')
@@ -68,11 +85,11 @@ function storagePush(imgSrc, price) {
 
     const last_id = cart_products.list.length
 
-        cart_products.list.push({
-            id: last_id,
-            img: imgSrc,
-            price: price
-        });
+    cart_products.list.push({
+        id: last_id,
+        img: imgSrc,
+        price: price
+    });
 
     localStorage.setItem("products", JSON.stringify(cart_products));
 }
